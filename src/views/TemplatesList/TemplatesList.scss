@@ -1,0 +1,27 @@
+.templates-list {
+  .head {
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.8em;
+    margin-bottom: 0.8em;
+  }
+  .templates {
+    .template {
+      display: block;
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      text-decoration: none;
+
+      &.new-template {
+        color: #505e91;
+        background: transparent;
+        border: 2px dashed;
+      }
+
+      &:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}

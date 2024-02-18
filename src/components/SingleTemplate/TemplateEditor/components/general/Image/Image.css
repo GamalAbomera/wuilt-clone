@@ -1,0 +1,14 @@
+.image-wrapper {
+  position: relative;
+}
+.image-wrapper .image {
+  cursor: pointer;
+}
+.image-wrapper .overlay {
+  background: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}/*# sourceMappingURL=Image.css.map */

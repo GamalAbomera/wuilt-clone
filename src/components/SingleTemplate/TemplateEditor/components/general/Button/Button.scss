@@ -1,0 +1,16 @@
+.button-widget {
+  &.primary {
+    color: #fff;
+    background: #065ab4;
+    border-radius: 4px;
+    padding: 8px;
+    border: 0;
+  }
+
+  &:hover span {
+    background: #00000072;
+    display: inline-block;
+    cursor: text;
+    /* padding: 5px; */
+  }
+}
