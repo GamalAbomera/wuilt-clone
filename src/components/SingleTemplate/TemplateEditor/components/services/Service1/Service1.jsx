@@ -17,7 +17,6 @@ export default function Service1({ options }) {
   const dispatch = useDispatch();
   const handleButton = (e, parentIndex) => {
     let state2 = { ...JSON.parse(JSON.stringify(servicesState.state)) };
-    console.log("parentIndex", parentIndex);
     state2.services[parentIndex].buttons[e.index].text = e.text;
     dispatch(updateSection(state2));
   };

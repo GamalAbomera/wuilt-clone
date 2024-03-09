@@ -26,7 +26,7 @@ export default function DefaultFooter({ options }) {
       {/* {JSON.stringify(footerState)} */}
       <TextField
         options={{
-          text: footerState.state.text,
+          text: footerState?.state?.text,
           style: {
             fontSize: "16px",
           },

@@ -10,7 +10,6 @@ export const settings = createSlice({
   },
   reducers: {
     setSettings(state, action) {
-      console.log(action.payload);
       state[action.payload?.module]["name"] = action?.payload?.name;
       state[action.payload?.module]["src"] = action?.payload?.src;
       state[action.payload?.module]["hasOverlay"] = action?.payload.hasOverlay;

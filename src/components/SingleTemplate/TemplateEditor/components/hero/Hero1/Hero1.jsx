@@ -39,7 +39,7 @@ export default function Hero1({ options }) {
   return (
     <>
       <div className="default-hero" onClick={updateSelectedSection}>
-        {heroState?.state?.img.hasOverlay}
+        {heroState?.state?.img?.hasOverlay}
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-2">

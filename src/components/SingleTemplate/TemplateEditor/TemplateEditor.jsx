@@ -7,7 +7,6 @@ export default function TemplateEditor() {
   const templates = useSelector((state) => state.templatesSlice);
   const template = templates.templates[0];
   const [sections, setSections] = useState([]);
-
   const importComponents = async () => {
     const sections = [];
     for (let i = 0; i < template.sections.length; i++) {
@@ -18,10 +17,12 @@ export default function TemplateEditor() {
       const Component = module.default;
       sections.push(
         <ElementWrapper
-          key={i}
+          key={section.id}
           title={section.state.name}
           addAfter={section.state.hideAddAfter ? false : true}
           index={i}
+          isSection={true}
+          sectionsLength={template.sections.length}
         >
           <Component options={{ ...section.state, index: i }} />
         </ElementWrapper>
@@ -32,7 +33,7 @@ export default function TemplateEditor() {
 
   useEffect(() => {
     importComponents();
-  }, [template.sections.length]);
+  }, [template.sections]);
 
   return (
     <>

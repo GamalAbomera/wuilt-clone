@@ -202,27 +202,15 @@ export const templatesSlice = createSlice({
     updateSection(state, action) {
       state.templates[state.selectedTemplate].sections[
         state.selectedSection
-      ].state = { ...action.payload };
+      ].state = { ...action?.payload };
     },
     addNewSection(state, action) {
-      // console.log(
-      //   "addnew section",
-      //   action.payload,
-      //   original(state.selectedSection)
-      // );
       if (state.selectedSection >= 0) {
         state.templates[state.selectedTemplate].sections.splice(
           state.selectedSection + 1,
           0,
           sectionsHelper[action.payload]
         );
-        // state.templates[state.selectedTemplate].sections.push(
-        //   sectionsHelper[action.payload]
-        // );
-        // console.log(
-        //   original(state.templates[state.selectedTemplate].sections),
-        //   sectionsHelper[action.payload]
-        // );
       }
     },
     setSelectedSection(state, action) {
@@ -231,16 +219,46 @@ export const templatesSlice = createSlice({
       }
     },
     setSelectedTemplate(state, action) {},
-    moveSection(state, action) {},
+    moveSection(state, action) {
+      const currentSection = action.payload.index;
+      if (action.payload.dir === "up" && currentSection > 0) {
+        const selectedSection =
+          state.templates[state.selectedTemplate].sections[currentSection];
+        state.templates[state.selectedTemplate].sections.splice(
+          currentSection,
+          1
+        );
+        state.templates[state.selectedTemplate].sections.splice(
+          currentSection - 1,
+          0,
+          selectedSection
+        );
+      } else if (
+        action.payload.dir === "down" &&
+        currentSection <
+          state.templates[state.selectedTemplate].sections.length - 2
+      ) {
+        const selectedSection =
+          state.templates[state.selectedTemplate].sections[currentSection];
+        state.templates[state.selectedTemplate].sections.splice(
+          currentSection,
+          1
+        );
+        state.templates[state.selectedTemplate].sections.splice(
+          currentSection + 1,
+          0,
+          selectedSection
+        );
+      }
+    },
     removeSection(state, action) {},
     setSelectedImageName(state, action) {
       if (action.payload?.deep) {
-        console.log(action.payload?.deep);
         state.selectDeepData = action.payload?.deep;
       } else {
         state.selectDeepData = null;
       }
-      state.selectedImageName = action.payload.name;
+      state.selectedImageName = action.payload?.name;
     },
     setImage(state, action) {
       if (state.selectDeepData) {
@@ -264,5 +282,6 @@ export const {
   setSelectedImageName,
   setSelectedSection,
   handleSelectTemplateMenu,
+  moveSection,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;
