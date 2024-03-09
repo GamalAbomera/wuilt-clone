@@ -5,9 +5,7 @@ import {
   moveSection,
 } from "../../../../../../store/slices/templatesSlice";
 import styled from "styled-components";
-const Actions = styled.div.attrs((props) => {
-  return { index: props.index || null };
-})`
+const Actions = styled.div`
   bottom: ${({ index }) => (index === 0 ? "calc(100% - 80px)" : "100%")};
 `;
 export default function ElementWrapper({
