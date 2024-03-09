@@ -34,7 +34,7 @@ export default function Service1({ options }) {
     dispatch(updateSection(newState));
   };
 
-  const servicesTemplate = servicesState.state.services.map((el, i) => {
+  const servicesTemplate = servicesState?.state?.services?.map((el, i) => {
     const buttonsTemplate = el.buttons?.map((el, j) => {
       return (
         <Button

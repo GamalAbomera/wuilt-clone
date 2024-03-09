@@ -9,31 +9,30 @@ export default function TemplateEditor() {
   const [sections, setSections] = useState([]);
 
   const importComponents = async () => {
+    const sections = [];
     for (let i = 0; i < template.sections.length; i++) {
       const section = template.sections[i];
-
       const module = await import(
         /* @vite-ignore */ "./components/" + section.component + ".jsx"
       );
       const Component = module.default;
-      setSections((sec) => {
-        console.log(section.state);
-        return [
-          ...sec,
-          <ElementWrapper
-            key={i}
-            title={section.state.name}
-            addAfter={section.state.hideAddAfter ? false : true}
-          >
-            <Component options={{ ...section.state, index: i }} />
-          </ElementWrapper>,
-        ];
-      });
+      sections.push(
+        <ElementWrapper
+          key={i}
+          title={section.state.name}
+          addAfter={section.state.hideAddAfter ? false : true}
+          index={i}
+        >
+          <Component options={{ ...section.state, index: i }} />
+        </ElementWrapper>
+      );
     }
+    setSections(sections);
   };
+
   useEffect(() => {
     importComponents();
-  }, []);
+  }, [template.sections.length]);
 
   return (
     <>

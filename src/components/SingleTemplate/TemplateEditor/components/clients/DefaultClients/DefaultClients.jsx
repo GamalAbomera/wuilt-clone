@@ -23,7 +23,7 @@ export default function DefaultClients({ options }) {
   const updateSelectedSection = () => {
     dispatch(setSelectedSection({ index: options.index }));
   };
-  const clientsTemplate = clientsState.state.clients.map((el, i) => (
+  const clientsTemplate = clientsState?.state?.clients?.map((el, i) => (
     <div className="col-md-3" key={el.id}>
       <div className="img-container mb-3">
         <Image

@@ -1,6 +1,7 @@
 .image-wrapper {
   position: relative;
   .image {
+    object-fit: cover;
     cursor: pointer;
   }
   .overlay {

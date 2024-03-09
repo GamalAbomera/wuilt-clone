@@ -1,15 +1,17 @@
 import { createSlice, original } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+import sectionsHelper from "../../shared/helpers/sections.helper";
 
 export const templatesSlice = createSlice({
   name: "templatesSlice",
   initialState: {
     templates: [
       {
-        id: 1,
+        id: uuidv4(),
         name: "Algoronic Academy",
         sections: [
           {
-            id: 1,
+            id: uuidv4(),
             component: "hero/Hero1/Hero1",
             state: {
               name: "default-hero",
@@ -26,28 +28,22 @@ export const templatesSlice = createSlice({
               },
               buttons: [
                 {
-                  id: 1,
+                  id: uuidv4(),
                   className: "primary",
                   text: "Start Now",
                   link: "#",
                 },
                 {
-                  id: 2,
+                  id: uuidv4(),
                   className: "primary",
                   text: "Contact Us",
-                  link: "#",
-                },
-                {
-                  id: 3,
-                  className: "primary",
-                  text: "Call Boda",
                   link: "#",
                 },
               ],
             },
           },
           {
-            id: 2,
+            id: uuidv4(),
             component: "services/Service1/Service1",
             state: {
               name: "default-services",
@@ -57,10 +53,10 @@ export const templatesSlice = createSlice({
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae voluptate quod ab perferendis cumque vitae quas architecto cupiditate assumenda ut.",
               services: [
                 {
-                  id: 1,
+                  id: uuidv4(),
                   title: "Service 1",
                   img: {
-                    src: "https://images.pexels.com/photos/20107913/pexels-photo-20107913/free-photo-of-a-single-red-rose-in-the-middle-of-green-leaves.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -71,7 +67,7 @@ export const templatesSlice = createSlice({
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, quas repellendus. Asperiores alias similique, expedita aliquid ea a illum, provident laborum quaerat soluta et. Tempore ratione placeat perferendis non animi?",
                   buttons: [
                     {
-                      id: 1,
+                      id: uuidv4(),
                       className: "primary",
                       text: "Read More",
                       link: "#",
@@ -79,10 +75,10 @@ export const templatesSlice = createSlice({
                   ],
                 },
                 {
-                  id: 2,
+                  id: uuidv4(),
                   title: "Service 2",
                   img: {
-                    src: "https://images.pexels.com/photos/20107913/pexels-photo-20107913/free-photo-of-a-single-red-rose-in-the-middle-of-green-leaves.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -93,7 +89,7 @@ export const templatesSlice = createSlice({
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, quas repellendus. Asperiores alias similique, expedita aliquid ea a illum, provident laborum quaerat soluta et. Tempore ratione placeat perferendis non animi?",
                   buttons: [
                     {
-                      id: 1,
+                      id: uuidv4(),
                       className: "primary",
                       text: "Read More",
                       link: "#",
@@ -101,10 +97,10 @@ export const templatesSlice = createSlice({
                   ],
                 },
                 {
-                  id: 3,
+                  id: uuidv4(),
                   title: "Service 3",
                   img: {
-                    src: "https://images.pexels.com/photos/20107913/pexels-photo-20107913/free-photo-of-a-single-red-rose-in-the-middle-of-green-leaves.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -115,7 +111,7 @@ export const templatesSlice = createSlice({
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, quas repellendus. Asperiores alias similique, expedita aliquid ea a illum, provident laborum quaerat soluta et. Tempore ratione placeat perferendis non animi?",
                   buttons: [
                     {
-                      id: 1,
+                      id: uuidv4(),
                       className: "primary",
                       text: "Read More",
                       link: "#",
@@ -126,7 +122,7 @@ export const templatesSlice = createSlice({
             },
           },
           {
-            id: 3,
+            id: uuidv4(),
             component: "clients/DefaultClients/DefaultClients",
             state: {
               name: "default-clients",
@@ -134,7 +130,7 @@ export const templatesSlice = createSlice({
               title: "Our Clients",
               clients: [
                 {
-                  id: 1,
+                  id: uuidv4(),
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -144,7 +140,7 @@ export const templatesSlice = createSlice({
                   },
                 },
                 {
-                  id: 2,
+                  id: uuidv4(),
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -154,7 +150,7 @@ export const templatesSlice = createSlice({
                   },
                 },
                 {
-                  id: 3,
+                  id: uuidv4(),
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -164,7 +160,7 @@ export const templatesSlice = createSlice({
                   },
                 },
                 {
-                  id: 4,
+                  id: uuidv4(),
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -177,7 +173,7 @@ export const templatesSlice = createSlice({
             },
           },
           {
-            id: 4,
+            id: uuidv4(),
             component: "footers/DefaultFooter/DefaultFooter",
             state: {
               hideAddAfter: true,
@@ -190,18 +186,44 @@ export const templatesSlice = createSlice({
     ],
     selectedTemplate: 0,
     selectedSection: null,
+    newSectionData: null,
     selectedImageName: "",
     selectDeepData: null,
     timeOut: null,
+    isSelectingSection: false,
   },
   reducers: {
+    handleSelectTemplateMenu(state, action) {
+      if (action.payload?.index >= 0) {
+        state.selectedSection = action.payload?.index;
+      }
+      state.isSelectingSection = !state.isSelectingSection;
+    },
     updateSection(state, action) {
       state.templates[state.selectedTemplate].sections[
         state.selectedSection
       ].state = { ...action.payload };
     },
     addNewSection(state, action) {
-      console.log("addnew section");
+      // console.log(
+      //   "addnew section",
+      //   action.payload,
+      //   original(state.selectedSection)
+      // );
+      if (state.selectedSection >= 0) {
+        state.templates[state.selectedTemplate].sections.splice(
+          state.selectedSection + 1,
+          0,
+          sectionsHelper[action.payload]
+        );
+        // state.templates[state.selectedTemplate].sections.push(
+        //   sectionsHelper[action.payload]
+        // );
+        // console.log(
+        //   original(state.templates[state.selectedTemplate].sections),
+        //   sectionsHelper[action.payload]
+        // );
+      }
     },
     setSelectedSection(state, action) {
       if (state.selectedSection != action.payload.index) {
@@ -241,5 +263,6 @@ export const {
   setImage,
   setSelectedImageName,
   setSelectedSection,
+  handleSelectTemplateMenu,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;

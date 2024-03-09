@@ -20,7 +20,7 @@ export default function Hero1({ options }) {
     state2.buttons[e.index].text = e.text;
     dispatch(updateSection(state2));
   };
-  const buttonsTemplate = heroState?.state.buttons?.map((el, i) => {
+  const buttonsTemplate = heroState?.state?.buttons?.map((el, i) => {
     return (
       <Button
         onChange={handleButton}
