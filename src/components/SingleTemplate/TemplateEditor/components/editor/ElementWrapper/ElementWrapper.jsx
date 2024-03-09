@@ -5,8 +5,10 @@ import {
   moveSection,
 } from "../../../../../../store/slices/templatesSlice";
 import styled from "styled-components";
-const Actions = styled.div`
-  bottom: ${(props) => (props.index === 0 ? "calc(100% - 80px)" : "100%")};
+const Actions = styled.div.attrs((props) => {
+  return { index: props.index || null };
+})`
+  bottom: ${({ index }) => (index === 0 ? "calc(100% - 80px)" : "100%")};
 `;
 export default function ElementWrapper({
   title,
@@ -16,6 +18,8 @@ export default function ElementWrapper({
   index,
   isSection,
   sectionsLength,
+  onRemoveElement,
+  hideDelete,
 }) {
   const dispatch = useDispatch();
   function openSectionsList() {
@@ -49,9 +53,11 @@ export default function ElementWrapper({
               <button>
                 <i className="fa-solid fa-gear"></i>
               </button>
-              <button>
-                <i className="fa-solid fa-minus"></i>
-              </button>
+              {!hideDelete ? (
+                <button onClick={() => onRemoveElement(index)}>
+                  <i className="fa-solid fa-minus"></i>
+                </button>
+              ) : null}
             </div>
           </Actions>
         )}

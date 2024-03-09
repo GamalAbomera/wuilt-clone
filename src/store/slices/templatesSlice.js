@@ -251,7 +251,12 @@ export const templatesSlice = createSlice({
         );
       }
     },
-    removeSection(state, action) {},
+    removeSection(state, action) {
+      state.templates[state.selectedTemplate].sections.splice(
+        action.payload,
+        1
+      );
+    },
     setSelectedImageName(state, action) {
       if (action.payload?.deep) {
         state.selectDeepData = action.payload?.deep;
@@ -283,5 +288,6 @@ export const {
   setSelectedSection,
   handleSelectTemplateMenu,
   moveSection,
+  removeSection,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;
