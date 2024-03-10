@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ElementWrapper from "../../editor/ElementWrapper/ElementWrapper";
 import "./Button.scss";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
 export default function Button({ options, onChange, children }) {
   const [text, setText] = useState("");
   useEffect(() => {
@@ -9,10 +11,18 @@ export default function Button({ options, onChange, children }) {
   const handleInput = (e) => {
     onChange({ index: options.index, text: e.target.innerText });
   };
+  const colors = useSelector((state) => state.templatesSlice.pallet);
+
+  const ButtonStyle = styled.button`
+    background: ${options.className === "primary"
+      ? colors.mainColor
+      : colors.subColor};
+    color: ${colors.textColor};
+  `;
   return (
     <>
       <ElementWrapper title="button">
-        <button className={options.className + " button-widget"}>
+        <ButtonStyle className="button-widget">
           <span
             onInput={handleInput}
             suppressContentEditableWarning={true}
@@ -20,7 +30,7 @@ export default function Button({ options, onChange, children }) {
           >
             {text}
           </span>
-        </button>
+        </ButtonStyle>
       </ElementWrapper>
     </>
   );

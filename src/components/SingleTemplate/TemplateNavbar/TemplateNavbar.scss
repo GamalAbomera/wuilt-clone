@@ -1,7 +1,21 @@
 .template-navbar {
   background-color: #fff;
   padding: 8px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   img {
     width: 100px;
+  }
+  .actions {
+    button {
+      background: #fff;
+      border-radius: 4px;
+      border: 0;
+      padding: 10px;
+      &:hover {
+        background: #eee;
+      }
+    }
   }
 }

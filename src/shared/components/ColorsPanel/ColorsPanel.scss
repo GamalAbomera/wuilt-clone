@@ -1,0 +1,30 @@
+.colors-panel {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: calc(100%);
+  z-index: 9999;
+  width: 300px;
+  background: #fff;
+  h4 {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .color-pallet {
+    padding: 0 10px;
+    border: 1px solid #eee;
+    margin: 10px 10px;
+    padding: 5px 10px;
+    .color {
+      display: inline-block;
+      height: 30px;
+      width: 33.3%;
+      border: 1px solid #eee;
+    }
+    &:hover {
+      background: #eee;
+      cursor: pointer;
+    }
+  }
+}

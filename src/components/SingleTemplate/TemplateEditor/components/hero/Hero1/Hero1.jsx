@@ -7,6 +7,9 @@ import {
   updateSection,
 } from "../../../../../../store/slices/templatesSlice";
 import "./Hero1.scss";
+import styled from "styled-components";
+import { hexToRgbA } from "../../../../../../shared/helpers/colors.helper";
+
 export default function Hero1({ options }) {
   const heroState = useSelector((state) => {
     const selectedTemplate = state.templatesSlice.selectedTemplate;
@@ -14,6 +17,7 @@ export default function Hero1({ options }) {
       options.index
     ];
   });
+  const colors = useSelector((state) => state.templatesSlice.pallet);
   const dispatch = useDispatch();
   const handleButton = (e) => {
     let state2 = { ...JSON.parse(JSON.stringify(heroState.state)) };
@@ -36,10 +40,16 @@ export default function Hero1({ options }) {
     dispatch(setSelectedSection({ index: options.index }));
   };
 
+  const Hero = styled.div`
+    background: linear-gradient(
+      to right,
+      ${hexToRgbA(colors.mainColor, 0.4)},
+      transparent
+    );
+  `;
   return (
     <>
-      <div className="default-hero" onClick={updateSelectedSection}>
-        {heroState?.state?.img?.hasOverlay}
+      <Hero className="default-hero" onClick={updateSelectedSection}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-2">
@@ -85,7 +95,7 @@ export default function Hero1({ options }) {
             </div>
           </div>
         </div>
-      </div>
+      </Hero>
     </>
   );
 }

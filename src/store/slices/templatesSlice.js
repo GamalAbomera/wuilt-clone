@@ -191,6 +191,11 @@ export const templatesSlice = createSlice({
     selectDeepData: null,
     timeOut: null,
     isSelectingSection: false,
+    pallet: {
+      mainColor: "#76ABAE",
+      subColor: "#31363F",
+      textColor: "#EEEEEE",
+    },
   },
   reducers: {
     handleSelectTemplateMenu(state, action) {
@@ -278,6 +283,9 @@ export const templatesSlice = createSlice({
         ].state[state.selectedImageName] = action.payload;
       }
     },
+    applyColorsPallet(state, action) {
+      state.pallet = { ...action.payload };
+    },
   },
 });
 export const {
@@ -289,5 +297,6 @@ export const {
   handleSelectTemplateMenu,
   moveSection,
   removeSection,
+  applyColorsPallet,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;

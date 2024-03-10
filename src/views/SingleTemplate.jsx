@@ -4,9 +4,13 @@ import ImageSettings from "../components/SingleTemplate/TemplateEditor/component
 import TemplateNavbar from "../components/SingleTemplate/TemplateNavbar/TemplateNavbar";
 import { setSelectedImageName } from "../store/slices/templatesSlice";
 import SectionsMenu from "../components/SingleTemplate/TemplateEditor/components/sectionsMenu/SectionsMenu";
+import ColorsPanel from "../shared/components/ColorsPanel/ColorsPanel";
 
 export default function SingleTemplate() {
   const dispatch = useDispatch();
+  const toggleColorsPanel = useSelector(
+    (state) => state.colors.toggleColorsPanel
+  );
   const showImageSettings = useSelector(
     (state) => state.templatesSlice.selectedImageName
   );
@@ -18,6 +22,8 @@ export default function SingleTemplate() {
   };
   return (
     <>
+      {toggleColorsPanel && <ColorsPanel />}
+
       <TemplateNavbar />
       <TemplateEditor />
       {showImageSettings && <ImageSettings onClose={handleOnClose} />}

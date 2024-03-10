@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import "./TemplateNavbar.scss";
+import { useDispatch } from "react-redux";
+import { handleToggleColorsPanel } from "../../../store/slices/colorsSlice";
 export default function TemplateNavbar() {
+  const dispatch = useDispatch();
+  function toggleColorPanel() {
+    dispatch(handleToggleColorsPanel());
+  }
   return (
     <>
       <nav className="template-navbar">
@@ -11,6 +17,11 @@ export default function TemplateNavbar() {
               alt=""
             />
           </Link>
+        </div>
+        <div className="actions">
+          <button onClick={toggleColorPanel}>
+            <i className="fa-solid fa-fill-drip"></i>
+          </button>
         </div>
       </nav>
     </>
