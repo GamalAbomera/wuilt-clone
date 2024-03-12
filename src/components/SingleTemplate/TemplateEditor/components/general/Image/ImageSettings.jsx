@@ -54,18 +54,19 @@ export default function ImageSettings({ onClose }) {
               name="alt"
             />
           </div>
-          <div className="form-group mb-3">
+          {/* <div className="form-group mb-3">
             <label>
               Overlay:&nbsp;
+              {imageSettings?.hasOverlay ? true : false}
               <input
                 type="checkbox"
-                value={imageSettings?.hasOverlay}
-                checked={imageSettings?.hasOverlay}
+                value={imageSettings?.hasOverlay ? true : false}
+                // checked={imageSettings?.hasOverlay ? true : false}
                 onChange={handleInput}
                 name="hasOverlay"
               />
             </label>
-          </div>
+          </div> */}
           {/* {imageSettings.hasOverlay && (
             <div className="form-group mb-3">
               <label>Color:</label>

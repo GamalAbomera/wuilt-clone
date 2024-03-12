@@ -20,9 +20,15 @@ export default function SingleTemplate() {
   const handleOnClose = () => {
     dispatch(setSelectedImageName({ name: "" }));
   };
+  let classes = "";
+  if (toggleColorsPanel) {
+    classes = "show";
+  } else {
+    classes = "";
+  }
   return (
     <>
-      {toggleColorsPanel && <ColorsPanel />}
+      <ColorsPanel className={classes} />
 
       <TemplateNavbar />
       <TemplateEditor />

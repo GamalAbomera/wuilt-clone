@@ -3,6 +3,21 @@ import ElementWrapper from "../../editor/ElementWrapper/ElementWrapper";
 import "./Button.scss";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+
+const ButtonStyle = styled.button`
+  ${(props) => {
+    if (props.colors && props.clsname) {
+      return `
+       background: ${
+         props.clsname === "primary"
+           ? props.colors.mainColor
+           : props.colors.subColor
+       };
+      color: ${props.colors.textColor};
+      `;
+    }
+  }}
+`;
 export default function Button({ options, onChange, children }) {
   const [text, setText] = useState("");
   useEffect(() => {
@@ -13,16 +28,14 @@ export default function Button({ options, onChange, children }) {
   };
   const colors = useSelector((state) => state.templatesSlice.pallet);
 
-  const ButtonStyle = styled.button`
-    background: ${options.className === "primary"
-      ? colors.mainColor
-      : colors.subColor};
-    color: ${colors.textColor};
-  `;
   return (
     <>
       <ElementWrapper title="button">
-        <ButtonStyle className="button-widget">
+        <ButtonStyle
+          colors={colors}
+          clsname={options.className}
+          className="button-widget"
+        >
           <span
             onInput={handleInput}
             suppressContentEditableWarning={true}

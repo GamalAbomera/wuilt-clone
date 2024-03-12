@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./ColorsPanel.scss";
 import { handleToggleColorsPanel } from "../../../store/slices/colorsSlice";
 import { applyColorsPallet } from "../../../store/slices/templatesSlice";
-export default function ColorsPanel() {
+export default function ColorsPanel({ className }) {
   const dispatch = useDispatch();
   const colors = useSelector((state) => state.colors.pallets);
   const colorsTemplate = colors.map((el, index) => (
@@ -22,8 +22,11 @@ export default function ColorsPanel() {
   }
   return (
     <>
-      <div onClick={closeColorPanel} className="overlay"></div>
-      <div className="colors-panel">
+      {className == "show" && (
+        <div onClick={closeColorPanel} className="overlay"></div>
+      )}
+
+      <div className={"colors-panel " + className}>
         <h4>Choose Your Colors</h4>
         {colorsTemplate}
       </div>

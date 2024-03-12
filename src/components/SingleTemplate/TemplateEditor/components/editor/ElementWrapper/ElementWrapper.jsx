@@ -6,7 +6,12 @@ import {
 } from "../../../../../../store/slices/templatesSlice";
 import styled from "styled-components";
 const Actions = styled.div`
-  bottom: ${({ index }) => (index === 0 ? "calc(100% - 80px)" : "100%")};
+  ${(props) => {
+    return `
+  bottom: ${props?.index === 0 ? "calc(100% - 80px)" : "100%"};
+  
+  `;
+  }}
 `;
 export default function ElementWrapper({
   title,

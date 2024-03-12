@@ -10,6 +10,13 @@ import "./Hero1.scss";
 import styled from "styled-components";
 import { hexToRgbA } from "../../../../../../shared/helpers/colors.helper";
 
+const Hero = styled.div`
+  background: linear-gradient(
+    to right,
+    ${(props) => hexToRgbA(props.colors.mainColor, 0.4)},
+    transparent
+  );
+`;
 export default function Hero1({ options }) {
   const heroState = useSelector((state) => {
     const selectedTemplate = state.templatesSlice.selectedTemplate;
@@ -40,16 +47,13 @@ export default function Hero1({ options }) {
     dispatch(setSelectedSection({ index: options.index }));
   };
 
-  const Hero = styled.div`
-    background: linear-gradient(
-      to right,
-      ${hexToRgbA(colors.mainColor, 0.4)},
-      transparent
-    );
-  `;
   return (
     <>
-      <Hero className="default-hero" onClick={updateSelectedSection}>
+      <Hero
+        colors={colors}
+        className="default-hero"
+        onClick={updateSelectedSection}
+      >
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-2">
