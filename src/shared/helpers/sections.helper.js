@@ -22,12 +22,20 @@ const hero = {
         className: "primary",
         text: "Start Now",
         link: "#",
+        action: {
+          name: "external link",
+          value: "",
+        },
       },
       {
         id: 2,
         className: "primary",
         text: "Contact Us",
         link: "#",
+        action: {
+          name: "external link",
+          value: "",
+        },
       },
     ],
   },
@@ -62,6 +70,10 @@ const services = {
             className: "primary",
             text: "Read More",
             link: "#",
+            action: {
+              name: "external link",
+              value: "",
+            },
           },
         ],
       },
@@ -84,6 +96,10 @@ const services = {
             className: "primary",
             text: "Read More",
             link: "#",
+            action: {
+              name: "external link",
+              value: "",
+            },
           },
         ],
       },
@@ -106,6 +122,10 @@ const services = {
             className: "primary",
             text: "Read More",
             link: "#",
+            action: {
+              name: "external link",
+              value: "",
+            },
           },
         ],
       },

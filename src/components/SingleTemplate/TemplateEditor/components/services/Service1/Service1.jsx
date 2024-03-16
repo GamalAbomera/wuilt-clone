@@ -40,6 +40,11 @@ export default function Service1({ options }) {
           onChange={(e) => handleButton(e, i)}
           options={{ ...el, index: j }}
           key={el.id}
+          id={el.id}
+          deep={{
+            module: "services",
+            index: i,
+          }}
         />
       );
     });

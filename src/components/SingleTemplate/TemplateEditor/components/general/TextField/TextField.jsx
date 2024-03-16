@@ -15,7 +15,7 @@ export default function TextField({ options, onInput }) {
       <ElementWrapper title="TextField" hideActions={options?.hideActions}>
         <div
           className="text-field"
-          onInput={onChange}
+          onBlur={onChange}
           contentEditable
           style={options?.style}
           suppressContentEditableWarning={true}

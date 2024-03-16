@@ -1,7 +1,4 @@
-import {
-  setImage,
-  setSelectedImageName,
-} from "../../../../../../store/slices/templatesSlice";
+import { setSelectedImageName } from "../../../../../../store/slices/templatesSlice";
 import ElementWrapper from "../../editor/ElementWrapper/ElementWrapper";
 import "./Image.scss";
 import { useDispatch } from "react-redux";
@@ -9,7 +6,13 @@ export default function Image({ options }) {
   const dispatch = useDispatch();
   return (
     <>
-      <ElementWrapper title="Image">
+      <ElementWrapper
+        title="Image"
+        settings={{
+          type: "image",
+          meta: { name: options?.name, deep: options?.deep },
+        }}
+      >
         <div
           className="image-wrapper"
           onClick={() => {

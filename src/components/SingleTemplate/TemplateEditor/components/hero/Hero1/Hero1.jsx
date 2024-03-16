@@ -37,6 +37,7 @@ export default function Hero1({ options }) {
         onChange={handleButton}
         options={{ ...el, index: i }}
         key={el.id}
+        id={el.id}
       />
     );
   });
@@ -94,7 +95,9 @@ export default function Hero1({ options }) {
                   onInput={handleInput}
                 />
 
-                <div className="d-flex">{buttonsTemplate}</div>
+                <div className="d-flex" style={{ gap: "10px" }}>
+                  {buttonsTemplate}
+                </div>
               </div>
             </div>
           </div>

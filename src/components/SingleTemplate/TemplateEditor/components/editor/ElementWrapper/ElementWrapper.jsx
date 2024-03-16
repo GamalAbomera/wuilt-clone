@@ -3,6 +3,8 @@ import "./ElementWrapper.scss";
 import {
   handleSelectTemplateMenu,
   moveSection,
+  setSelectedImageName,
+  setSelectedButtonId,
 } from "../../../../../../store/slices/templatesSlice";
 import styled from "styled-components";
 const Actions = styled.div`
@@ -23,6 +25,7 @@ export default function ElementWrapper({
   sectionsLength,
   onRemoveElement,
   hideDelete,
+  settings,
 }) {
   const dispatch = useDispatch();
   function openSectionsList() {
@@ -30,6 +33,20 @@ export default function ElementWrapper({
   }
   function moveSectionUpDown(dir) {
     dispatch(moveSection({ dir, index }));
+  }
+  function handleSettings() {
+    switch (settings.type) {
+      case "button":
+        dispatch(setSelectedButtonId(settings.meta));
+        break;
+      case "image":
+        dispatch(setSelectedImageName(settings.meta));
+        break;
+
+      default:
+        console.log("no settings for this element");
+        break;
+    }
   }
 
   return (
@@ -53,9 +70,12 @@ export default function ElementWrapper({
                   ) : null}
                 </>
               ) : null}
-              <button>
-                <i className="fa-solid fa-gear"></i>
-              </button>
+              {settings && (
+                <button onClick={handleSettings}>
+                  <i className="fa-solid fa-gear"></i>
+                </button>
+              )}
+
               {!hideDelete ? (
                 <button onClick={() => onRemoveElement(index)}>
                   <i className="fa-solid fa-minus"></i>

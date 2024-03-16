@@ -29,15 +29,23 @@ export const templatesSlice = createSlice({
               buttons: [
                 {
                   id: uuidv4(),
-                  className: "primary",
+                  className: "outline",
                   text: "Start Now",
                   link: "#",
+                  action: {
+                    name: "external link",
+                    value: "",
+                  },
                 },
                 {
                   id: uuidv4(),
                   className: "primary",
                   text: "Contact Us",
                   link: "#",
+                  action: {
+                    name: "email address",
+                    value: "",
+                  },
                 },
               ],
             },
@@ -71,6 +79,10 @@ export const templatesSlice = createSlice({
                       className: "primary",
                       text: "Read More",
                       link: "#",
+                      action: {
+                        name: "external link",
+                        value: "",
+                      },
                     },
                   ],
                 },
@@ -93,6 +105,10 @@ export const templatesSlice = createSlice({
                       className: "primary",
                       text: "Read More",
                       link: "#",
+                      action: {
+                        name: "external link",
+                        value: "",
+                      },
                     },
                   ],
                 },
@@ -115,6 +131,10 @@ export const templatesSlice = createSlice({
                       className: "primary",
                       text: "Read More",
                       link: "#",
+                      action: {
+                        name: "external link",
+                        value: "",
+                      },
                     },
                   ],
                 },
@@ -126,7 +146,6 @@ export const templatesSlice = createSlice({
             component: "clients/DefaultClients/DefaultClients",
             state: {
               name: "default-clients",
-
               title: "Our Clients",
               clients: [
                 {
@@ -188,6 +207,7 @@ export const templatesSlice = createSlice({
     selectedSection: null,
     newSectionData: null,
     selectedImageName: "",
+    selectedButtonId: "",
     selectDeepData: null,
     timeOut: null,
     isSelectingSection: false,
@@ -283,6 +303,32 @@ export const templatesSlice = createSlice({
         ].state[state.selectedImageName] = action.payload;
       }
     },
+    setButton(state, action) {
+      let buttons = null;
+      const section =
+        state.templates[state.selectedTemplate].sections[state.selectedSection];
+      if (state.selectDeepData) {
+        buttons =
+          section.state[state.selectDeepData.module][state.selectDeepData.index]
+            .buttons;
+      } else {
+        buttons = section.state.buttons;
+      }
+      const index = buttons.findIndex((el) => el.id == state.selectedButtonId);
+      if (action.payload.name == "className") {
+        buttons[index][action.payload.name] = action.payload.value;
+      } else {
+        buttons[index].action[action.payload.name] = action.payload.value;
+      }
+    },
+    setSelectedButtonId(state, action) {
+      if (action.payload?.deep) {
+        state.selectDeepData = action.payload?.deep;
+      } else {
+        state.selectDeepData = null;
+      }
+      state.selectedButtonId = action.payload?.id;
+    },
     applyColorsPallet(state, action) {
       state.pallet = { ...action.payload };
     },
@@ -298,5 +344,7 @@ export const {
   moveSection,
   removeSection,
   applyColorsPallet,
+  setSelectedButtonId,
+  setButton,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;
