@@ -1,9 +1,13 @@
 import Panel from "../../../../../../shared/components/Panel/Panel";
 import { useDispatch, useSelector } from "react-redux";
 import { setImage } from "../../../../../../store/slices/templatesSlice";
+import "./Image.scss";
+import ImageSearch from "./ImageSearch";
+import { useState } from "react";
 
 export default function ImageSettings({ onClose }) {
   const dispatch = useDispatch();
+  const [showSearch, setShowSearch] = useState(false);
   const deepSelectData = useSelector((state) => {
     return state.templatesSlice.selectDeepData;
   });
@@ -24,25 +28,32 @@ export default function ImageSettings({ onClose }) {
   });
 
   const handleInput = (e) => {
-    let val =
-      e.target.name === "hasOverlay"
-        ? Boolean(!e.target.checked)
-        : e.target.value;
+    let val = e.target.value;
     dispatch(setImage({ ...imageSettings, [e.target.name]: val }));
+  };
+  const toggleImageSearch = () => {
+    setShowSearch(!showSearch);
+  };
+  const handleImageSelection = (url) => {
+    dispatch(setImage({ ...imageSettings, src: url }));
+    setShowSearch(!showSearch);
   };
   return (
     <>
       <div className="image-settings">
         <Panel title="Image Settings" onClose={onClose}>
           <div className="form-group mb-3">
-            <label>Source:</label>
-            <input
-              type="text"
-              value={imageSettings?.src}
-              onInput={handleInput}
-              className="form-control"
-              name="src"
-            />
+            <div className="preview" onClick={toggleImageSearch}>
+              <img
+                className="image-preview"
+                src={imageSettings?.src}
+                width="100%"
+                height="200px"
+              />
+              <div className="preview-overlay">
+                <i className="fa-solid fa-arrow-up-from-bracket"></i>
+              </div>
+            </div>
           </div>
           <div className="form-group mb-3">
             <label>Alt:</label>
@@ -54,39 +65,13 @@ export default function ImageSettings({ onClose }) {
               name="alt"
             />
           </div>
-          {/* <div className="form-group mb-3">
-            <label>
-              Overlay:&nbsp;
-              {imageSettings?.hasOverlay ? true : false}
-              <input
-                type="checkbox"
-                value={imageSettings?.hasOverlay ? true : false}
-                // checked={imageSettings?.hasOverlay ? true : false}
-                onChange={handleInput}
-                name="hasOverlay"
-              />
-            </label>
-          </div> */}
-          {/* {imageSettings.hasOverlay && (
-            <div className="form-group mb-3">
-              <label>Color:</label>
-              <input
-                type="color"
-                value={imageSettings.color}
-                onInput={handleInput}
-                className="form-control"
-                name="color"
-              />
-               <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.1"
-              className="form-control"
-            /> *
-            </div>
-          )} */}
         </Panel>
+        {showSearch && (
+          <ImageSearch
+            onClose={toggleImageSearch}
+            onSelect={handleImageSelection}
+          />
+        )}
       </div>
     </>
   );
