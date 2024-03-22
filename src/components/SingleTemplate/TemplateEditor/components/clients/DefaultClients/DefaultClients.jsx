@@ -6,6 +6,7 @@ import {
   setSelectedSection,
   updateSection,
 } from "../../../../../../store/slices/templatesSlice";
+import Column from "../../general/Column/Column";
 export default function DefaultClients({ options }) {
   const dispatch = useDispatch();
 
@@ -23,8 +24,15 @@ export default function DefaultClients({ options }) {
   const updateSelectedSection = () => {
     dispatch(setSelectedSection({ index: options.index }));
   };
-  const clientsTemplate = clientsState?.state?.clients?.map((el, i) => (
-    <div className="col-md-3" key={el.id}>
+  const clientsTemplate = clientsState?.state?.clients?.map((el, i, arr) => (
+    <Column
+      options={el}
+      index={i}
+      module="clients"
+      itemsLength={arr.length}
+      key={el.id}
+      hideDelete={arr.length <= 1}
+    >
       <div className="img-container mb-3">
         <Image
           options={{
@@ -37,11 +45,10 @@ export default function DefaultClients({ options }) {
           }}
         />
       </div>
-    </div>
+    </Column>
   ));
   return (
     <div className="default-clients" onClick={updateSelectedSection}>
-      {/* {JSON.stringify(clientsState)} */}
       <div className="container text-center">
         <TextField
           options={{

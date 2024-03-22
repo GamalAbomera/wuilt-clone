@@ -2,19 +2,15 @@ $mainColor: #009f20;
 $secColor: #05721b;
 .element-wrapper {
   position: relative;
-  border: 1px solid transparent;
   .actions {
     position: absolute;
-    right: 0;
     display: none;
-    border: 1px solid $mainColor;
     font-size: 13px;
-    min-width: 110px;
+    min-width: fit-content;
     background-color: #fff;
     justify-content: space-between;
     z-index: 99;
     span {
-      background: $mainColor;
       color: #fff;
       font-weight: bold;
       display: inline-block;
@@ -46,7 +42,6 @@ $secColor: #05721b;
     }
   }
   &:hover {
-    border: 1px solid $mainColor;
     background: rgba(0, 0, 0, 0.1);
   }
   &:hover > .actions {

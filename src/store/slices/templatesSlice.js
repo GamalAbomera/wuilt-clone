@@ -63,6 +63,7 @@ export const templatesSlice = createSlice({
                 {
                   id: uuidv4(),
                   title: "Service 1",
+                  col: 4,
                   img: {
                     src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
@@ -89,6 +90,7 @@ export const templatesSlice = createSlice({
                 {
                   id: uuidv4(),
                   title: "Service 2",
+                  col: 4,
                   img: {
                     src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
@@ -115,6 +117,7 @@ export const templatesSlice = createSlice({
                 {
                   id: uuidv4(),
                   title: "Service 3",
+                  col: 4,
                   img: {
                     src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     width: "100%",
@@ -150,6 +153,7 @@ export const templatesSlice = createSlice({
               clients: [
                 {
                   id: uuidv4(),
+                  col: 3,
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -160,6 +164,7 @@ export const templatesSlice = createSlice({
                 },
                 {
                   id: uuidv4(),
+                  col: 3,
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -170,6 +175,7 @@ export const templatesSlice = createSlice({
                 },
                 {
                   id: uuidv4(),
+                  col: 3,
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -180,6 +186,7 @@ export const templatesSlice = createSlice({
                 },
                 {
                   id: uuidv4(),
+                  col: 3,
                   img: {
                     src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
                     width: "100%",
@@ -332,6 +339,34 @@ export const templatesSlice = createSlice({
     applyColorsPallet(state, action) {
       state.pallet = { ...action.payload };
     },
+    cloneElement(state, action) {
+      const section =
+        state.templates[state.selectedTemplate].sections[state.selectedSection];
+      const module = section.state[action.payload.module];
+      const item = { ...module[action.payload.index] };
+      item.id = uuidv4();
+      module.push(item);
+    },
+    removeElement(state, action) {
+      const section =
+        state.templates[state.selectedTemplate].sections[state.selectedSection];
+      const module = section.state[action.payload.module];
+      module.splice(action.payload.index, 1);
+    },
+    moveElement(state, action) {
+      const section =
+        state.templates[state.selectedTemplate].sections[state.selectedSection];
+      const module = section.state[action.payload.module];
+      let item = { ...module[action.payload.index] };
+      let nextSectionIndex = null;
+      if (action.payload.dir === "right") {
+        nextSectionIndex = action.payload.index + 1;
+      } else {
+        nextSectionIndex = action.payload.index - 1;
+      }
+      module.splice(action.payload.index, 1);
+      module.splice(nextSectionIndex, 0, item);
+    },
   },
 });
 export const {
@@ -346,5 +381,8 @@ export const {
   applyColorsPallet,
   setSelectedButtonId,
   setButton,
+  cloneElement,
+  removeElement,
+  moveElement,
 } = templatesSlice.actions;
 export default templatesSlice.reducer;

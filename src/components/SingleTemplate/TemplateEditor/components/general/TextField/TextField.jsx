@@ -12,7 +12,11 @@ export default function TextField({ options, onInput }) {
 
   return (
     <>
-      <ElementWrapper title="TextField" hideActions={options?.hideActions}>
+      <ElementWrapper
+        title="TextField"
+        hideDelete
+        hideActions={options?.hideActions}
+      >
         <div
           className="text-field"
           onBlur={onChange}

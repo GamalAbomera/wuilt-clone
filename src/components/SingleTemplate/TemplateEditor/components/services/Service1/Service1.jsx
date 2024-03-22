@@ -7,6 +7,7 @@ import Button from "../../general/Button/Button";
 import Image from "../../general/Image/Image";
 import TextField from "../../general/TextField/TextField";
 import "./Service1.scss";
+import Column from "../../general/Column/Column";
 export default function Service1({ options }) {
   const servicesState = useSelector((state) => {
     const selectedTemplate = state.templatesSlice.selectedTemplate;
@@ -33,7 +34,7 @@ export default function Service1({ options }) {
     dispatch(updateSection(newState));
   };
 
-  const servicesTemplate = servicesState?.state?.services?.map((el, i) => {
+  const servicesTemplate = servicesState?.state?.services?.map((el, i, arr) => {
     const buttonsTemplate = el.buttons?.map((el, j) => {
       return (
         <Button
@@ -49,7 +50,14 @@ export default function Service1({ options }) {
       );
     });
     return (
-      <div className="col-md-4" key={el.id}>
+      <Column
+        options={el}
+        module="services"
+        hideDelete={arr.length <= 1}
+        index={i}
+        key={el.id}
+        itemsLength={arr.length}
+      >
         <div className="service">
           <Image
             options={{
@@ -94,7 +102,7 @@ export default function Service1({ options }) {
           />
           {buttonsTemplate}
         </div>
-      </div>
+      </Column>
     );
   });
   return (
@@ -138,7 +146,7 @@ export default function Service1({ options }) {
               onInput={handleInput}
             />
           </div>
-          <div className="row">{servicesTemplate}</div>
+          <div className="row gy-3">{servicesTemplate}</div>
         </div>
       </div>
     </>

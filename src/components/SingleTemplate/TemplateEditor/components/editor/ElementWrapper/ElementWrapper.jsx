@@ -9,9 +9,40 @@ import {
 import styled from "styled-components";
 const Actions = styled.div`
   ${(props) => {
+    let position = "";
+    switch (props?.position) {
+      case "left":
+        position = "left:0";
+        break;
+      default:
+        position = "right:0";
+        break;
+    }
+    let color = "#009f20";
+    if (props?.color) {
+      color = props?.color;
+    }
     return `
   bottom: ${props?.index === 0 ? "calc(100% - 80px)" : "100%"};
-  
+  border:1px solid ${color};
+  span{
+    background:${color}
+  }
+  ${position}
+  `;
+  }}
+`;
+const Wrapper = styled.div`
+  ${(props) => {
+    let color = "#009f20";
+    if (props?.color) {
+      color = props?.color;
+    }
+    return `
+    border: 1px solid transparent;
+  &:hover{
+    border: 1px solid ${color};
+  }
   `;
   }}
 `;
@@ -23,9 +54,14 @@ export default function ElementWrapper({
   index,
   isSection,
   sectionsLength,
-  onRemoveElement,
   hideDelete,
   settings,
+  actionsPosition,
+  color,
+  show,
+  onClone,
+  onRemoveElement,
+  onMove,
 }) {
   const dispatch = useDispatch();
   function openSectionsList() {
@@ -51,9 +87,14 @@ export default function ElementWrapper({
 
   return (
     <>
-      <div className="element-wrapper">
+      <Wrapper color={color} className="element-wrapper">
         {!hideActions && (
-          <Actions index={index} className="actions">
+          <Actions
+            color={color}
+            index={index}
+            position={actionsPosition}
+            className="actions"
+          >
             <span>{title}</span>
             <div className="buttons">
               {isSection ? (
@@ -70,12 +111,27 @@ export default function ElementWrapper({
                   ) : null}
                 </>
               ) : null}
+
+              {show?.clone && (
+                <button onClick={onClone}>
+                  <i className="fa-regular fa-clone"></i>
+                </button>
+              )}
+              {show?.moveLeft && (
+                <button onClick={() => onMove("left")}>
+                  <i className="fa-solid fa-arrow-left"></i>
+                </button>
+              )}
+              {show?.moveRight && (
+                <button onClick={() => onMove("right")}>
+                  <i className="fa-solid fa-arrow-right"></i>
+                </button>
+              )}
               {settings && (
                 <button onClick={handleSettings}>
                   <i className="fa-solid fa-gear"></i>
                 </button>
               )}
-
               {!hideDelete ? (
                 <button onClick={() => onRemoveElement(index)}>
                   <i className="fa-solid fa-minus"></i>
@@ -91,7 +147,7 @@ export default function ElementWrapper({
             <i className="fa fa-plus"></i>
           </div>
         )}
-      </div>
+      </Wrapper>
     </>
   );
 }

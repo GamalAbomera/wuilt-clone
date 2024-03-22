@@ -8,6 +8,7 @@ export default function Image({ options }) {
     <>
       <ElementWrapper
         title="Image"
+        hideDelete={true}
         settings={{
           type: "image",
           meta: { name: options?.name, deep: options?.deep },

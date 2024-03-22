@@ -48,6 +48,7 @@ export default function Button({ options, onChange, id, deep }) {
     <>
       <ElementWrapper
         title="button"
+        hideDelete
         settings={{ type: "button", meta: { id, deep } }}
       >
         <ButtonStyle

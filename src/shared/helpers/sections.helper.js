@@ -54,6 +54,7 @@ const services = {
       {
         id: uuidv4(),
         title: "Service 1",
+        col: 4,
         img: {
           src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           width: "100%",
@@ -80,6 +81,7 @@ const services = {
       {
         id: uuidv4(),
         title: "Service 2",
+        col: 4,
         img: {
           src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           width: "100%",
@@ -106,6 +108,7 @@ const services = {
       {
         id: uuidv4(),
         title: "Service 3",
+        col: 4,
         img: {
           src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
           width: "100%",
@@ -143,6 +146,7 @@ const clients = {
     clients: [
       {
         id: uuidv4(),
+        col: 3,
         img: {
           src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
           width: "100%",
@@ -153,6 +157,7 @@ const clients = {
       },
       {
         id: uuidv4(),
+        col: 3,
         img: {
           src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
           width: "100%",
@@ -163,6 +168,7 @@ const clients = {
       },
       {
         id: uuidv4(),
+        col: 3,
         img: {
           src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
           width: "100%",
@@ -173,6 +179,7 @@ const clients = {
       },
       {
         id: uuidv4(),
+        col: 3,
         img: {
           src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
           width: "100%",
