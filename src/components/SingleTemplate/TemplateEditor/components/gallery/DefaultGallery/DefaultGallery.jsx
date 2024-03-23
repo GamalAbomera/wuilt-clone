@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import Image from "../../general/Image/Image";
 import TextField from "../../general/TextField/TextField";
-import "./DefaultClients.scss";
+import "./DefaultGallery.scss";
 import {
   setSelectedSection,
   updateSection,
 } from "../../../../../../store/slices/templatesSlice";
 import Column from "../../general/Column/Column";
-export default function DefaultClients({ options }) {
+export default function DefaultGallery({ options }) {
   const dispatch = useDispatch();
 
   const clientsState = useSelector((state) => {
@@ -24,11 +24,11 @@ export default function DefaultClients({ options }) {
   const updateSelectedSection = () => {
     dispatch(setSelectedSection({ index: options.index }));
   };
-  const clientsTemplate = clientsState?.state?.clients?.map((el, i, arr) => (
+  const clientsTemplate = clientsState?.state?.gallery?.map((el, i, arr) => (
     <Column
       options={el}
       index={i}
-      module="clients"
+      module="gallery"
       itemsLength={arr.length}
       key={el.id}
       hideDelete={arr.length <= 1}
@@ -39,7 +39,7 @@ export default function DefaultClients({ options }) {
             ...el.img,
             name: "img",
             deep: {
-              module: "clients",
+              module: "gallery",
               index: i,
             },
           }}

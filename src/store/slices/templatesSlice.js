@@ -12,10 +12,49 @@ export const templatesSlice = createSlice({
         sections: [
           {
             id: uuidv4(),
+            component: "navbars/DefaultNavbar/DefaultNavbar",
+            state: {
+              frameColor: "rgb(250, 197, 21)",
+              hideActions: true,
+              name: "default-navbar",
+              img: {
+                src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
+                height: "",
+                width: "100%",
+                alt: "Hero Img",
+                hasOverlay: false,
+                color: "",
+              },
+              buttons: [
+                {
+                  id: uuidv4(),
+                  className: "outline",
+                  text: "Login",
+                  link: "#",
+                  action: {
+                    name: "external link",
+                    value: "",
+                  },
+                },
+                {
+                  id: uuidv4(),
+                  className: "primary",
+                  text: "Sign up",
+                  link: "#",
+                  action: {
+                    name: "external link",
+                    value: "",
+                  },
+                },
+              ],
+            },
+          },
+          {
+            id: uuidv4(),
             component: "hero/Hero1/Hero1",
             state: {
               name: "default-hero",
-              head: "Hello Rezo",
+              head: "Hello there,",
               paragraph:
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iste natus quidem tempore voluptas numquam, molestiae minus reprehenderit, rerum adipisci ex dolorem ab ad a? Excepturi veniam perferendis sunt porro.",
               img: {
@@ -65,7 +104,7 @@ export const templatesSlice = createSlice({
                   title: "Service 1",
                   col: 4,
                   img: {
-                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/1006293/pexels-photo-1006293.jpeg?auto=compress&cs=tinysrgb&h=350",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -92,7 +131,7 @@ export const templatesSlice = createSlice({
                   title: "Service 2",
                   col: 4,
                   img: {
-                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/1181248/pexels-photo-1181248.jpeg?auto=compress&cs=tinysrgb&h=350",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -119,7 +158,7 @@ export const templatesSlice = createSlice({
                   title: "Service 3",
                   col: 4,
                   img: {
-                    src: "https://images.pexels.com/photos/17485819/pexels-photo-17485819/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-the-ways-in-which-ai-can-solve-important-problems-it-was-created-by-vincent-schwenk-as-part-of-the-visualis.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    src: "https://images.pexels.com/photos/218863/pexels-photo-218863.jpeg?auto=compress&cs=tinysrgb&h=350",
                     width: "100%",
                     height: "300px",
                     alt: "service alt",
@@ -149,8 +188,54 @@ export const templatesSlice = createSlice({
             component: "clients/DefaultClients/DefaultClients",
             state: {
               name: "default-clients",
+              content:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nihil.",
               title: "Our Clients",
               clients: [
+                {
+                  id: uuidv4(),
+                  col: 3,
+                  img: {
+                    src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
+                    width: "100%",
+                    alt: "client alt",
+                    hasOverlay: false,
+                    color: "",
+                  },
+                },
+                {
+                  id: uuidv4(),
+                  col: 3,
+                  img: {
+                    src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
+                    width: "100%",
+                    alt: "client alt",
+                    hasOverlay: false,
+                    color: "",
+                  },
+                },
+                {
+                  id: uuidv4(),
+                  col: 3,
+                  img: {
+                    src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
+                    width: "100%",
+                    alt: "client alt",
+                    hasOverlay: false,
+                    color: "",
+                  },
+                },
+                {
+                  id: uuidv4(),
+                  col: 3,
+                  img: {
+                    src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
+                    width: "100%",
+                    alt: "client alt",
+                    hasOverlay: false,
+                    color: "",
+                  },
+                },
                 {
                   id: uuidv4(),
                   col: 3,
@@ -202,7 +287,9 @@ export const templatesSlice = createSlice({
             id: uuidv4(),
             component: "footers/DefaultFooter/DefaultFooter",
             state: {
+              frameColor: "rgb(250, 197, 21)",
               hideAddAfter: true,
+              hideActions: true,
               name: "default-footer",
               text: "all rights reserved © 2023",
             },
@@ -241,7 +328,7 @@ export const templatesSlice = createSlice({
         state.templates[state.selectedTemplate].sections.splice(
           state.selectedSection + 1,
           0,
-          sectionsHelper[action.payload]
+          sectionsHelper[action.payload.type][action.payload.component]
         );
       }
     },

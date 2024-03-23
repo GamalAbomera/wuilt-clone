@@ -72,7 +72,9 @@
     }
   }
   .tabs-content {
-    min-height: 308px;
+    height: 308px;
+    overflow-y: auto;
+    overflow-x: hidden;
     min-width: 780px;
     .loading {
       height: 308px;

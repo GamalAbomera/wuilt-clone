@@ -8,13 +8,13 @@ export const getImages = createAsyncThunk(
       apiKey = "hXx3fBBvUc08YP9408kpIwdSSV3MQILtfPesXSnZqj6mqN6Cx9tckAJ0";
       apiUrl = `https://api.pexels.com/v1/search?query=${encodeURIComponent(
         payload.searchQuery
-      )}&per_page=6`;
+      )}&per_page=30`;
     } else {
       console.log(payload);
       apiKey = "K-FdgDUNS8MYqVbw3QH7QXNiXUwiJKF9V0slq7oawU8";
       apiUrl = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(
         payload.searchQuery
-      )}&client_id=${apiKey}&per_page=6`;
+      )}&client_id=${apiKey}&per_page=30`;
     }
 
     return fetch(apiUrl, {

@@ -23,7 +23,7 @@ const Actions = styled.div`
       color = props?.color;
     }
     return `
-  bottom: ${props?.index === 0 ? "calc(100% - 80px)" : "100%"};
+  bottom: 100%;
   border:1px solid ${color};
   span{
     background:${color}
@@ -88,14 +88,14 @@ export default function ElementWrapper({
   return (
     <>
       <Wrapper color={color} className="element-wrapper">
-        {!hideActions && (
-          <Actions
-            color={color}
-            index={index}
-            position={actionsPosition}
-            className="actions"
-          >
-            <span>{title}</span>
+        <Actions
+          color={color}
+          index={index}
+          position={actionsPosition}
+          className="actions"
+        >
+          <span>{title}</span>
+          {!hideActions && (
             <div className="buttons">
               {isSection ? (
                 <>
@@ -104,7 +104,7 @@ export default function ElementWrapper({
                       <i className="fa-solid fa-arrow-down"></i>
                     </button>
                   ) : null}
-                  {index > 0 && index < sectionsLength - 1 ? (
+                  {index > 1 && index < sectionsLength - 1 ? (
                     <button onClick={() => moveSectionUpDown("up")}>
                       <i className="fa-solid fa-arrow-up"></i>
                     </button>
@@ -138,8 +138,8 @@ export default function ElementWrapper({
                 </button>
               ) : null}
             </div>
-          </Actions>
-        )}
+          )}
+        </Actions>
 
         <div className="element">{children}</div>
         {addAfter && (

@@ -1,0 +1,19 @@
+.service-3 {
+  padding: 64px 8px;
+  background: #fff;
+  .service {
+    display: flex;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    background: #fff;
+    img {
+      border-radius: 16px 0 0 16px;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px;
+    }
+  }
+}

@@ -31,8 +31,10 @@ export default function TemplateEditor() {
           hideDelete={template.sections.length == 2}
           index={i}
           isSection={true}
+          color={section?.state?.frameColor}
           sectionsLength={template.sections.length}
           onRemoveElement={onRemoveElement}
+          hideActions={section?.state?.hideActions}
         >
           <Component options={{ ...section.state, index: i }} />
         </ElementWrapper>
@@ -48,7 +50,7 @@ export default function TemplateEditor() {
   return (
     <>
       <div className="template-editor">
-        <DefaultNavbar />
+        {/* <DefaultNavbar /> */}
         {sections.map((el) => el)}
       </div>
     </>

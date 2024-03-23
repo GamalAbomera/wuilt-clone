@@ -1,16 +1,51 @@
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../general/Button/Button";
 import Image from "../../general/Image/Image";
 import "./DefaultNavbar.scss";
-export default function DefaultNavbar() {
+import {
+  setSelectedSection,
+  updateSection,
+} from "../../../../../../store/slices/templatesSlice";
+export default function DefaultNavbar({ options }) {
+  const dispatch = useDispatch();
+
+  const navbar = useSelector((state) => {
+    const selectedTemplate = state.templatesSlice.selectedTemplate;
+    return state.templatesSlice.templates[selectedTemplate].sections[
+      options.index
+    ];
+  });
+  const handleButton = (e) => {
+    let state2 = { ...JSON.parse(JSON.stringify(navbar.state)) };
+    state2.buttons[e.index].text = e.text;
+    dispatch(updateSection(state2));
+  };
+
+  const buttonsTemplate = navbar?.state?.buttons?.map((el, i) => {
+    return (
+      <Button
+        onChange={handleButton}
+        options={{ ...el, index: i }}
+        key={el.id}
+        id={el.id}
+      />
+    );
+  });
+  const updateSelectedSection = () => {
+    dispatch(setSelectedSection({ index: options.index }));
+  };
   return (
-    <div className="default-navbar">
+    <div className="default-navbar" onClick={updateSelectedSection}>
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container">
           <a className="navbar-brand" href="#">
             <Image
               options={{
-                src: "https://d2pi0n2fm836iz.cloudfront.net/488796/05102023231800645c2628dd416.svg",
-                width: "140px",
+                src: navbar?.state?.img?.src,
+                width: "100%",
+                name: "img",
+                hasOverlay: navbar?.state?.img?.hasOverlay,
+                color: navbar?.state?.img?.color,
               }}
             />
           </a>
@@ -39,10 +74,7 @@ export default function DefaultNavbar() {
                 </a>
               </li>
             </ul>
-            <div className="ms-auto d-flex">
-              <Button options={{ text: "Contact us", className: "primary" }} />
-              <Button options={{ text: "Start Now", className: "primary" }} />
-            </div>
+            <div className="ms-auto d-flex">{buttonsTemplate}</div>
           </div>
         </div>
       </nav>

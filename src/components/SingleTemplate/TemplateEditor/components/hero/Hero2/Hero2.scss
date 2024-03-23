@@ -1,0 +1,13 @@
+.hero-2 {
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}

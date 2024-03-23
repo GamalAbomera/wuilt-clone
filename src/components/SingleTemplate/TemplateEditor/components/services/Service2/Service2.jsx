@@ -6,7 +6,7 @@ import {
 import Button from "../../general/Button/Button";
 import Image from "../../general/Image/Image";
 import TextField from "../../general/TextField/TextField";
-import "./Service1.scss";
+import "./Service2.scss";
 import Column from "../../general/Column/Column";
 export default function Service1({ options }) {
   const servicesState = useSelector((state) => {
@@ -111,7 +111,7 @@ export default function Service1({ options }) {
   });
   return (
     <>
-      <div className="default-service" onClick={updateSelectedSection}>
+      <div className="service-2" onClick={updateSelectedSection}>
         <div className="container">
           {/* {JSON.stringify(servicesState)} */}
           <div className="text-center">

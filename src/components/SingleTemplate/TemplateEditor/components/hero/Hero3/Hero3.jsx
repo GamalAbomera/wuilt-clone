@@ -6,9 +6,8 @@ import {
   setSelectedSection,
   updateSection,
 } from "../../../../../../store/slices/templatesSlice";
-import "./Hero1.scss";
+import "./Hero3.scss";
 import styled from "styled-components";
-import { hexToRgbA } from "../../../../../../shared/helpers/colors.helper";
 
 const Hero = styled.div`
   background: #fff;
@@ -46,30 +45,15 @@ export default function Hero1({ options }) {
 
   return (
     <>
-      <Hero
-        colors={colors}
-        className="default-hero"
-        onClick={updateSelectedSection}
-      >
+      <Hero colors={colors} className="hero-3" onClick={updateSelectedSection}>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-4">
-              <Image
-                options={{
-                  src: heroState?.state?.img?.src,
-                  width: "100%",
-                  name: "img",
-                  hasOverlay: heroState?.state?.img?.hasOverlay,
-                  color: heroState?.state?.img?.color,
-                }}
-              />
-            </div>
             <div className="col-md-8">
               <div className="hero-content">
                 <TextField
                   options={{
                     style: {
-                      fontSize: "30px",
+                      fontSize: "50px",
                       fontWeight: "bold",
                     },
                     name: "head",
@@ -81,7 +65,7 @@ export default function Hero1({ options }) {
                 <TextField
                   options={{
                     style: {
-                      fontSize: "16px",
+                      fontSize: "20px",
                       marginBottom: "20px",
                     },
                     name: "paragraph",
@@ -95,6 +79,17 @@ export default function Hero1({ options }) {
                   {buttonsTemplate}
                 </div>
               </div>
+            </div>
+            <div className="col-md-4">
+              <Image
+                options={{
+                  src: heroState?.state?.img?.src,
+                  width: "100%",
+                  name: "img",
+                  hasOverlay: heroState?.state?.img?.hasOverlay,
+                  color: heroState?.state?.img?.color,
+                }}
+              />
             </div>
           </div>
         </div>
