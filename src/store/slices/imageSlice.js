@@ -10,7 +10,6 @@ export const getImages = createAsyncThunk(
         payload.searchQuery
       )}&per_page=30`;
     } else {
-      console.log(payload);
       apiKey = "K-FdgDUNS8MYqVbw3QH7QXNiXUwiJKF9V0slq7oawU8";
       apiUrl = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(
         payload.searchQuery
